@@ -320,8 +320,9 @@ export const pageData = {
   homePage: {
     layout: "Layout1",
     metaData: {
-      title: "Homepage title",
-      description: "Homepage description",
+      title: "AMATE - Love your energy",
+      description:
+        "AMATE je osviežujúci sýtený nápoj s vysokým obsahom kofeínu (30 mg na 100 ml), nálevom z listov maté a rastlinnými extraktmi.",
     },
     sidebarNav: { visible: false }, // values: undefined, true, false; overwrites the global property
     centerText: true,
