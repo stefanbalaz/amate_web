@@ -991,8 +991,8 @@ export const pageData = {
       centerText: true,
       layout: "Layout1",
       metaData: {
-        title: "Impressum page title",
-        description: "Impressum page description",
+        title: "Impressum",
+        description: "Impressum",
       },
       content: [
         {
@@ -1129,8 +1129,8 @@ export const pageData = {
       centerText: true,
       layout: "Layout1",
       metaData: {
-        title: "Datenschutzerklärung page title",
-        description: "Datenschutzerklärung page description",
+        title: "Ochrana osobných údajov",
+        description: "Ochrana osobných údajov",
       },
       content: [
         {
