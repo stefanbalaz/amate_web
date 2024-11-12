@@ -85,8 +85,8 @@ module.exports = {
       colors: {
         primary: {
           light: "#f1f7f9", //CHECKED
-          default: "#E7F0F2", //CHECKED
-          dark: "#c7dce0", //CHECKED
+          default: "#6899a3", //CHECKED #E7F0F2
+          dark: "#0f4752", //CHECKED "#c7dce0" // Button
         },
         secondary: {
           light: "#d6d6d6", //CHECKED
@@ -103,7 +103,7 @@ module.exports = {
           dark: "#2d3748",
         },
         /*    textColor: "#4f4f4f", */
-        textColor: "#880000",
+        textColor: "#5B5B5B",
       },
       fontFamily: Object.fromEntries(
         Object.entries(fontFamilies).map(([key, value]) => [

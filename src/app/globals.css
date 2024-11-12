@@ -22,3 +22,19 @@
 p {
   @apply leading-[1.6];
 }
+
+/* Disable number input arrows */
+@layer components {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    @apply appearance-none;
+  }
+
+  input[type="number"] {
+    @apply appearance-none;
+  }
+
+  input[type="number"]::-moz-appearance {
+    @apply appearance-none;
+  }
+}

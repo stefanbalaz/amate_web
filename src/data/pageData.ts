@@ -16,9 +16,20 @@ export const pageData = {
           id: 1,
           layoutID: 1, // This is not necessary probably
           global: {
+            primaryColorLight: "var(--primary-light)", // CSS variable from Tailwind config
+            primaryColorDefault: "var(--primary-default)", // CSS variable from Tailwind config
+            primaryColorDark: "var(--primary-dark)", // CSS variable from Tailwind config
+            secondaryColorLight: "var(--secondary-light)",
+            secondaryColorDefault: "var(--secondary-default)",
+            secondaryColorDark: "var(--secondary-dark)",
+            tertiaryColorLight: "var(--tertiary-light)",
+            tertiaryColorDefault: "var(--tertiary-default)",
+            tertiaryColorDark: "var(--tertiary-dark)",
+            neutralLight: "var(--neutral-light)", // CSS variable from Tailwind config
+            neutralDark: "var(--neutral-dark)", // CSS variable from Tailwind config
             font: "cervo" as const, // undefined - font inter; works only for global property, or tailwind default fonts "sans", "serif", "mono" or individually added font - fontname like "cinzel", "caveat", etc.
             fontSize: "text-base",
-            textColor: "text-secondary-default",
+            textColor: "text-textColor",
             backgroundColor: "bg-primary-light",
             designAdditionalClassName: "tracking-wider", // "tracking-wider" tailwind utility applied to spacing between letters
           },
@@ -26,8 +37,8 @@ export const pageData = {
           button: {
             size: "large", // Ensure this is one of the specified string literals
             rounded: "rounded-full", // Ensure this is either "rounded" or "rounded-full"
-            primary: {}, // Define the properties here based on your design
-            secondary: {},
+            primary: { color: "bg-primary-dark" }, // Define the properties here based on your design
+            secondary: { color: "bg-secondary-dark" },
             designAdditionalClassName: "",
           },
 
@@ -50,7 +61,7 @@ export const pageData = {
           },
           topNav: {
             visible: false,
-            backgroundColor: "bg-primary-light",
+            backgroundColor: "bg-primary-default",
             textColor: "",
           },
           hero: {
@@ -98,8 +109,8 @@ export const pageData = {
             designAdditionalClassName: "", // rounded-lg shadow-secondary-1
           },
           sidebarNav: {
-            backgroundColor: "bg-primary-light",
-            visible: false, // values: true, false; shows the right sidebar with content (h1 and h2) overview; visible sidebar shrinks the content into first two of three grid columns; global property for entire app, can be overwritten by property on individual pages
+            backgroundColor: "bg-primary-default",
+            visible: true, // values: true, false; shows the right sidebar with content (h1 and h2) overview; visible sidebar shrinks the content into first two of three grid columns; global property for entire app, can be overwritten by property on individual pages
           },
           headline1: {
             font: "cinzel" as const,
@@ -200,7 +211,7 @@ export const pageData = {
 
     header: {
       topNavList: [
-        /*     {
+        {
           id: 1,
           label: "Road",
           displayOrder: 1,
@@ -244,7 +255,7 @@ export const pageData = {
           footerVisible: true,
           dropdown: true,
           url: "https://www.sme.sk",
-        }, */
+        },
       ],
       topNavExternal: [
         /*      {
@@ -499,6 +510,60 @@ export const pageData = {
                   {
                     type: "text",
                     text: "Maté je pralesná rastlina objavená v 16. storočí u juhoamerických Indiánov. Nápoj z maté sa v krajinách Južnej Ameriky postupne stal obľúbeným povzbudzujúcim nápojom družnosti, ktorý sa tradične pije v kruhu priateľov a rodiny. V posledných dvoch desaťročiach sa limonáda z maté stala najpopulárnejším trendovým nápojom v Berlíne a úspešne sa rozširuje na daľšie trhy v Európe.",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+
+      {
+        type: "section",
+        id: "section7",
+        parent: null,
+        className: "",
+        children: [
+          {
+            type: "headline1",
+            className: "",
+            text: "\u00A0", // Non-breaking space character
+          },
+        ],
+      },
+
+      {
+        type: "section",
+        id: "section8",
+        parent: null,
+        className: "",
+        children: [
+          {
+            type: "headline1",
+            className: "",
+            text: "Objednávky",
+          },
+          {
+            type: "paragraphGroup",
+            className: "",
+            children: [
+              {
+                type: "paragraph",
+                //  type: "bold",
+                className: "",
+                children: [
+                  {
+                    type: "text",
+                    text: "Ak máte záujem o objednávku našich nápojov, neváhajte nás kontaktovať. Stačí, ak pošlete e-mail na adresu ",
+                  },
+                  {
+                    type: "textLink",
+                    text: "info@amate.sk",
+                    href: "mailto:info@amate.sk",
+                  },
+                  {
+                    type: "text",
+                    text: " a my vám poskytneme všetky potrebné informácie a pomôžeme s objednávkou.",
                   },
                 ],
               },

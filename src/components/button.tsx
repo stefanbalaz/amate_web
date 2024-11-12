@@ -1,8 +1,9 @@
 import { twMerge } from "tailwind-merge";
 import { selectedDesignStyle } from "@/lib/utilities/designStyle/designStyle";
 import { ButtonRounded, ButtonSize } from "@/app/types";
+import { Children } from "react";
 
-export default function Button() {
+export default function Button({ children }: { children: React.ReactNode }) {
   const { button: buttonDesignStyle } = selectedDesignStyle || {};
 
   // Button size
@@ -61,7 +62,8 @@ export default function Button() {
         roundedButton
       )}
     >
-      Primary
+      {/* Primary */}
+      {children}
     </button>
   );
 }

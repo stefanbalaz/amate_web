@@ -106,12 +106,13 @@ export default function contentRenderer(params: ContentRendererParams) {
 
       {/* Render sidebarNav */}
       {shouldShowSidebar && (
-        <div className="mt-5">
+        <div className="mt-5 ">
           <div
             id="scrollspy-smooth"
             className={twMerge(
-              "sticky top-0 ps-3 py-3",
-              sidebarNavDesignConfig?.backgroundColor
+              "sticky top-0 px-3 py-3",
+              sidebarNavDesignConfig?.backgroundColor,
+              "bg-opacity-20"
             )}
           >
             <ul data-twe-nav-list-ref>

@@ -52,7 +52,7 @@ export default function Footer() {
     /*   <footer className="bg-zinc-50 text-center text-surface/75 dark:bg-neutral-700 dark:text-white/75 lg:text-left"> */
     <footer
       className={twMerge(
-        "text-center dark:bg-neutral-700 dark:text-white/75 lg:text-left",
+        "text-center dark:bg-neutral-700 dark:text-white/75 lg:text-left bg-opacity-20",
         footerElementConfig.elementAdditionalClassName,
         footerDesignConfig?.backgroundColor,
         footerDesignConfig?.textColor,

@@ -10,6 +10,7 @@ import { selectedDesignStyle } from "../lib/utilities/designStyle/designStyle";
 import Breadcrumbs from "@/components/breadcrumbs";
 import CookieConsent from "@/components/cookieConsent";
 import Hero from "@/components/hero";
+// import store from "@/store/store"; // Import your store here
 
 const { homePage } = pageData;
 
@@ -45,18 +46,19 @@ export default function RootLayout({
 
   return (
     <html lang="de">
-      <body
-        suppressHydrationWarning={true}
-        className={twMerge(
-          /*   "flex flex-col gap-6", */
-          globalDesignConfig?.textColor,
-          selectedFont,
-          globalDesignConfig?.fontSize,
-          globalDesignConfig?.backgroundColor,
-          globalDesignConfig?.designAdditionalClassName
-        )}
-      >
-        {/* <StoreProvider>
+      <StoreProvider>
+        <body
+          suppressHydrationWarning={true}
+          className={twMerge(
+            /*   "flex flex-col gap-6", */
+            globalDesignConfig?.textColor,
+            selectedFont,
+            globalDesignConfig?.fontSize,
+            globalDesignConfig?.backgroundColor,
+            globalDesignConfig?.designAdditionalClassName
+          )}
+        >
+          {/* <StoreProvider>
           <Header />
           <Breadcrumbs />
           <main
@@ -74,7 +76,7 @@ export default function RootLayout({
           <Footer />
         </StoreProvider> */}
 
-        <StoreProvider>
+          {/* <StoreProvider store={store}> */}
           {heroDesignConfig?.fullWidth ? (
             <div className="relative">
               {/* Hero Section */}
@@ -109,8 +111,8 @@ export default function RootLayout({
 
           <CookieConsent />
           <Footer />
-        </StoreProvider>
-      </body>
+        </body>
+      </StoreProvider>
     </html>
   );
 }

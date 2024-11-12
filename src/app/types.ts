@@ -9,6 +9,17 @@ export type HeroTextAlign = "left" | "center" | "right" | "justify";
 // DESIGN CONFIG START
 
 interface GlobalDesign {
+  primaryColorLight: string;
+  primaryColorDefault: string;
+  primaryColorDark: string;
+  secondaryColorLight: string;
+  secondaryColorDefault: string;
+  secondaryColorDark: string;
+  tertiaryColorLight: string;
+  tertiaryColorDefault: string;
+  tertiaryColorDark: string;
+  neutralLight: string;
+  neutralDark: string;
   font: FontType;
   fontSize: string; // Tailwind text-size classes like "text-base"
   textColor: string; // Tailwind text-color classes

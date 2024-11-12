@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import configReducer from "@/lib/features/config/configSlice";
 import breadcrumbsReducer from "./breadcrumbsSlice"; // Adjust path as necessary
+import cartReducer from "./cartSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       config: configReducer,
       breadcrumbs: breadcrumbsReducer,
+      cart: cartReducer,
     },
   });
 };
