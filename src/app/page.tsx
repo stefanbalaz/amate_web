@@ -13,7 +13,7 @@ import { ContentRendererParams } from "@/app/types";
 
 // initTWE({ ScrollSpy });
 
-export default function Home({ params }: { params: ContentRendererParams }) {
+export default function Home({ params }: { params: any }) {
   if (!params) {
     throw new Error("Params is undefined");
   }
