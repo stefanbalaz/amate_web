@@ -11,7 +11,7 @@ import { setBreadcrumbs } from "@/store/breadcrumbsSlice";
 import { Usable, use, useEffect, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
 import { selectedDesignStyle } from "@/lib/utilities/designStyle/designStyle";
-import contentRenderer from "@/lib/utilities/contentRendering/contentRenderer";
+import ContentRenderer from "@/lib/utilities/contentRendering/contentRenderer";
 
 export default function FirstLevelPage({ params }: any) {
   if (!params) {
@@ -54,7 +54,7 @@ export default function FirstLevelPage({ params }: any) {
 
   // console.log("breadcrumbs first level page", breadcrumbs);
 
-  const generatedContent = contentRenderer(params);
+  const generatedContent = ContentRenderer(params);
 
   return (
     <div

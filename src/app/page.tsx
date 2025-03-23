@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { setBreadcrumbs } from "@/store/breadcrumbsSlice";
 import { useEffect, useMemo } from "react";
 import Hero from "@/components/hero";
-import contentRenderer from "@/lib/utilities/contentRendering/contentRenderer";
+import ContentRenderer from "@/lib/utilities/contentRendering/contentRenderer";
 import { ContentRendererParams } from "@/app/types";
 
 // initTWE({ ScrollSpy });
@@ -42,7 +42,7 @@ export default function Home({ params }: { params: ContentRendererParams }) {
     dispatch(setBreadcrumbs(breadcrumbs));
   }, [dispatch, breadcrumbs]);
 
-  const generatedContent = contentRenderer(params);
+  const generatedContent = ContentRenderer(params);
 
   return (
     <>

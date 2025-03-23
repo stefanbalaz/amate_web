@@ -13,7 +13,7 @@ interface Block {
   children: { type: string }[];
 }
 
-export default function contentRenderer(params: ContentRendererParams) {
+export default function ContentRenderer(params: ContentRendererParams) {
   const { sidebarNav: sidebarNavDesignConfig } = selectedDesignStyle || {};
 
   const resolvedParams = use(params as Usable<ContentRendererParams>);

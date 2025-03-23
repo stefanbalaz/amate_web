@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBreadcrumbs } from "@/store/breadcrumbsSlice";
 import { useEffect, useState, useMemo } from "react";
 import Hero from "@/components/hero";
-import contentRenderer from "@/lib/utilities/contentRendering/contentRenderer";
+import ContentRenderer from "@/lib/utilities/contentRendering/contentRenderer";
 import { ContentRendererParams } from "@/app/types";
 import Headline2 from "@/components/headline2";
 import Image from "next/image";
@@ -153,7 +153,7 @@ export default function Confirmation({
     dispatch(setBreadcrumbs(breadcrumbs));
   }, [dispatch, breadcrumbs]);
 
-  const generatedContent = contentRenderer(params);
+  const generatedContent = ContentRenderer(params);
 
   const cartItems = useSelector((state: RootState) => state.cart.items);
 

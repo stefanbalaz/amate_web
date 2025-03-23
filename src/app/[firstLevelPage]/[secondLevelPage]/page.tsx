@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { setBreadcrumbs } from "@/store/breadcrumbsSlice";
 import { useEffect, useMemo } from "react";
 import { pageData } from "@/data/pageData";
-import contentRenderer from "@/lib/utilities/contentRendering/contentRenderer";
+import ContentRenderer from "@/lib/utilities/contentRendering/contentRenderer";
 import { twMerge } from "tailwind-merge";
 import { selectedDesignStyle } from "@/lib/utilities/designStyle/designStyle";
 
@@ -66,7 +66,7 @@ export default function SecondLevelPage({ currentSecondLevelPage }: any) {
     dispatch(setBreadcrumbs(breadcrumbs));
   }, [dispatch, breadcrumbs]);
 
-  const generatedContent = contentRenderer(params);
+  const generatedContent = ContentRenderer(params);
 
   return (
     <div
