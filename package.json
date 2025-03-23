@@ -15,9 +15,9 @@
     "classnames": "^2.5.1",
     "next": "^15.2.3",
     "react": "^19.0.0",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.0.0",
     "react-ga4": "^2.1.0",
-    "react-redux": "^9.1.2",
+    "react-redux": "^9.2.0",
     "tailwind-merge": "^2.5.2",
     "tw-elements": "^2.0.0",
     "vanilla-cookieconsent": "^3.0.1"
