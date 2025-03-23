@@ -2,9 +2,12 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { pageData } from "@/data/pageData";
 import SecondLevelPage from "./page";
-import { SecondLevelPage as SecondLevelPageProps } from "@/app/types";
+import {
+  FirstLevelPage,
+  SecondLevelPage as SecondLevelPageProps,
+} from "@/app/types";
 
-export async function generateStaticParams() {
+/* export async function generateStaticParams() {
   const staticParams = [];
   for (const firstLevelPage of pageData.firstLevelPage) {
     if (firstLevelPage.secondLevelPage) {
@@ -13,6 +16,33 @@ export async function generateStaticParams() {
           firstLevelPage: firstLevelPage.url,
           secondLevelPage: secondLevelPage.url,
         }))
+      );
+    }
+  }
+  return staticParams;
+} */
+
+export async function generateStaticParams() {
+  const staticParams = [];
+  for (const firstLevelPage of pageData.firstLevelPage) {
+    /*  if (firstLevelPage?.secondLevelPage) {
+      staticParams.push(
+        ...firstLevelPage?.secondLevelPage.map(
+          (secondLevelPage: SecondLevelPageProps) => ({
+            firstLevelPage: firstLevelPage.url,
+            secondLevelPage: secondLevelPage.url,
+          })
+        )
+      );
+    } */
+    if ("secondLevelPage" in firstLevelPage) {
+      staticParams.push(
+        (firstLevelPage.secondLevelPage as SecondLevelPageProps[])?.map(
+          (secondLevelPage: SecondLevelPageProps) => ({
+            firstLevelPage: firstLevelPage.url,
+            secondLevelPage: secondLevelPage.url,
+          })
+        )
       );
     }
   }
@@ -33,15 +63,18 @@ any): Promise<any> {
   if (!firstLevelPageData) {
     notFound();
   }
-  const currentSecondLevelPage = firstLevelPageData.secondLevelPage?.find(
+  /*   const currentSecondLevelPage = firstLevelPageData?.secondLevelPage?.find(
     (page) => page.url === secondLevelPageSlug
-  );
+  ); */
+  const currentSecondLevelPage = (
+    firstLevelPageData as FirstLevelPage
+  ).secondLevelPage?.find((page) => page.url === secondLevelPageSlug);
   if (!currentSecondLevelPage) {
     notFound();
   }
   return {
-    title: currentSecondLevelPage.metaData.title,
-    description: currentSecondLevelPage.metaData.description,
+    title: currentSecondLevelPage.metaData?.title,
+    description: currentSecondLevelPage.metaData?.description,
     /*   openGraph: {
       images: [
         {
@@ -65,9 +98,12 @@ export default function Layout({ params }: any): any {
   if (!firstLevelPageData) {
     notFound();
   }
-  const currentSecondLevelPage = firstLevelPageData.secondLevelPage?.find(
+  /*   const currentSecondLevelPage = firstLevelPageData.secondLevelPage?.find(
     (page) => page.url === secondLevelPageSlug
-  );
+  ); */
+  const currentSecondLevelPage = (
+    firstLevelPageData as FirstLevelPage
+  ).secondLevelPage?.find((page) => page.url === secondLevelPageSlug);
   if (!currentSecondLevelPage) {
     notFound();
   }
