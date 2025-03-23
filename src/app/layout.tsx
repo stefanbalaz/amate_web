@@ -10,6 +10,10 @@ import { selectedDesignStyle } from "../lib/utilities/designStyle/designStyle";
 import Breadcrumbs from "@/components/breadcrumbs";
 import CookieConsent from "@/components/cookieConsent";
 import Hero from "@/components/hero";
+import { usePathname } from "next/navigation";
+import HeaderHero from "@/components/headerHero";
+
+import { use } from "react";
 // import store from "@/store/store"; // Import your store here
 
 const { homePage } = pageData;
@@ -50,6 +54,7 @@ export default function RootLayout({
         <body
           suppressHydrationWarning={true}
           className={twMerge(
+            "flex flex-col min-h-screen", // Flexbox for layout
             /*   "flex flex-col gap-6", */
             globalDesignConfig?.textColor,
             selectedFont,
@@ -58,48 +63,15 @@ export default function RootLayout({
             globalDesignConfig?.designAdditionalClassName
           )}
         >
-          {/* <StoreProvider>
-          <Header />
-          <Breadcrumbs />
-          <main
-            className={twMerge(
-              "",
-              mainDesignConfig?.width,
-              mainDesignConfig?.position,
-              mainDesignConfig?.backgroundColor,
-              mainDesignConfig?.designAdditionalClassName
-            )}
-          >
-            {children}
-          </main>
-          <CookieConsent />
-          <Footer />
-        </StoreProvider> */}
-
           {/* <StoreProvider store={store}> */}
-          {heroDesignConfig?.fullWidth ? (
-            <div className="relative">
-              {/* Hero Section */}
-              {isFullWidthHero && <Hero />}
+          {/* {heroDesignConfig?.fullWidth && !pathname.includes("/shop") ? ( */}
 
-              {/* Overlay Header and Breadcrumbs */}
-              <div className="absolute top-0 left-0 w-full">
-                <Header />
-                <Breadcrumbs />
-              </div>
-            </div>
-          ) : (
-            <>
-              {/* Standard Header and Breadcrumbs */}
-              <Header />
-              <Breadcrumbs />
-            </>
-          )}
+          <HeaderHero />
 
           {/* Main Content */}
           <main
             className={twMerge(
-              "",
+              "flex-grow", // Ensures main content fills remaining space
               mainDesignConfig?.width,
               mainDesignConfig?.position,
               mainDesignConfig?.backgroundColor,

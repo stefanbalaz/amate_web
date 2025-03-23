@@ -1,12 +1,14 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { selectedDesignStyle } from "@/lib/utilities/designStyle/designStyle";
 import { twMerge } from "tailwind-merge";
 
 export default function Hero() {
-  // const {
-  //   hero: { main: heroDesignStyle },
-  // } = selectedDesignStyle || {};
+  const pathname = usePathname(); // Access the current path
+  console.log("pathname", pathname);
 
   const { hero } = selectedDesignStyle || {};
   const heroDesignStyle = hero?.main;
@@ -32,14 +34,15 @@ export default function Hero() {
   };
 
   // Determine the hero image size
-  // const heroSize = getHeroImageSize(heroDesignStyle?.image?.imageHeight);
   const heroSize = getHeroImageSize(heroDesignStyle?.image?.imageHeight ?? "");
 
-  // Conditional rendering of the image based on `imageHeight`
+  // Conditional rendering based on pathname
+  const showHeroImage = !pathname.includes("/shop");
+
+  // Render image conditionally
   const image =
     heroDesignStyle?.image?.imageHeight === "full" ? (
       <div className="mb-3 hover:scale-110 transition-transform duration-300">
-        {/* <div className="mb-3"> */}
         <Image
           className={twMerge(
             heroDesignStyle?.image?.designAdditionalClassName,
@@ -53,23 +56,24 @@ export default function Hero() {
             height: "auto",
           }}
           src={`/${heroDesignStyle?.image?.imgName || "default.png"}`}
-          // alt={heroDesignStyle?.content?.simple?.imgAlt || "Hero Image"}
           alt={heroDesignStyle?.image?.imgAlt || "Hero Image"}
           quality={100}
         />
       </div>
     ) : (
-      <div className={twMerge("relative w-full", heroSize)}>
-        <Image
-          alt="Mountains"
-          src={`/${heroDesignStyle?.image?.imgName || "default.png"}`}
-          fill
-          sizes="(min-width: 808px) 50vw, 100vw"
-          style={{
-            objectFit: "cover",
-          }}
-        />
-      </div>
+      showHeroImage && (
+        <div className={twMerge("relative w-full", heroSize)}>
+          <Image
+            alt="Mountains"
+            src={`/${heroDesignStyle?.image?.imgName || "default.png"}`}
+            fill
+            sizes="(min-width: 808px) 50vw, 100vw"
+            style={{
+              objectFit: "cover",
+            }}
+          />
+        </div>
+      )
     );
 
   const getSimpleElementPosition = (position: string) => {
@@ -84,10 +88,6 @@ export default function Hero() {
         return ""; // Fallback if no match
     }
   };
-
-  // const simpleElementPosition = getSimpleElementPosition(
-  //   heroDesignStyle?.content?.simple?.position
-  // );
 
   const simpleElementPosition = getSimpleElementPosition(
     heroDesignStyle?.content?.simple?.position ?? ""
@@ -108,10 +108,6 @@ export default function Hero() {
     }
   };
 
-  // const simpleElementTextPosition = getSimpleElementTextPosition(
-  //   heroDesignStyle?.content?.simple?.textAlign
-  // );
-
   const simpleElementTextPosition = getSimpleElementTextPosition(
     heroDesignStyle?.content?.simple?.textAlign ?? ""
   );
@@ -129,17 +125,11 @@ export default function Hero() {
       >
         {image}
         <div
-          className={
-            twMerge(
-              "absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed",
-              heroDesignStyle?.style?.opacity
-            )
-            /*  `absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,${heroDesignStyle?.style?.opacity})]` */
-            /* "absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed", */
-            /*  heroDesignStyle?.style?.opacity */
-          }
+          className={twMerge(
+            "absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed",
+            heroDesignStyle?.style?.opacity
+          )}
         >
-          {/* <div className="flex h-full items-center justify-center"> */}
           {heroDesignStyle?.content?.simple?.visible && (
             <div
               className={twMerge(

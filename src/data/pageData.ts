@@ -35,11 +35,19 @@ export const pageData = {
           },
 
           button: {
-            size: "large", // Ensure this is one of the specified string literals
-            rounded: "rounded-full", // Ensure this is either "rounded" or "rounded-full"
-            primary: { color: "bg-primary-dark" }, // Define the properties here based on your design
+            size: "large", // Ensure this is one of the specified string literals; small, medium, large
+            rounded: "rounded-md", // Ensure this is either "rounded" or "rounded-full"
+            primary: {
+              color: "bg-primary-dark",
+              style:
+                "hover:opacity-80 active:opacity-50 text-white font-bold hover:shadow-primary-2 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:shadow-primary-2",
+            }, // Define the properties here based on your design
             secondary: { color: "bg-secondary-dark" },
             designAdditionalClassName: "",
+          },
+
+          image: {
+            designAdditionalClassName: "border-4 border-red-400", //
           },
 
           header: {
@@ -243,7 +251,7 @@ export const pageData = {
           label: "Snow",
           displayOrder: 3,
           topNavVisible: true,
-          footerVisible: true,
+          footerVisible: false,
           dropdown: false,
           url: "https://www.sme.sk",
         },
@@ -252,7 +260,7 @@ export const pageData = {
           label: "Content",
           displayOrder: 5,
           topNavVisible: true,
-          footerVisible: true,
+          footerVisible: false,
           dropdown: true,
           url: "https://www.sme.sk",
         },
@@ -419,7 +427,7 @@ export const pageData = {
                 children: [
                   {
                     type: "text",
-                    text: "Nápoj AMATE najlepšie chutí vychladený. Vynikne jemne horká a plná chuť maté; exotickú sviežosť nápoja zvýraznia jeho ochutené varianty s mätou, cukrovým melónom, konope a zázvorom. AMATE je vhodný na prípravu chutných alkoholických i nealkoholických longdrinkov a cocktailov. Najobľúbenejšími miešanými napojmi z AMATE sú jeho kombinácie s vínom, sektom, vodkou, ginom alebo rumom.",
+                    text: "Nápoj AMATE najlepšie chutí vychladený. Vynikne jemne horká a plná chuť maté; exotickú sviežosť nápoja zvýraznia jeho ochutené varianty s mätou, zázvorom, uharkou, cukrovým melónom a konope. Pre tých, ktorí uprednostňujú čistú chuť, je k dispozícii aj neochutená verzia, ktorá existuje aj v bezcukrovej variante. AMATE je vhodný na prípravu chutných alkoholických i nealkoholických longdrinkov a cocktailov. Najobľúbenejšími miešanými napojmi z AMATE sú jeho kombinácie s vínom, sektom, vodkou, ginom alebo rumom.",
                   },
                 ],
               },
@@ -592,6 +600,10 @@ export const pageData = {
         title: "Car page title",
         description: "Car page description",
       },
+      hero: {
+        visible: false,
+        type: "main", // values: undefined, sub, main
+      },
       content: [
         {
           type: "section",
@@ -729,6 +741,10 @@ export const pageData = {
             title: "Wheel page title",
             description: "Wheel page description",
           },
+          hero: {
+            visible: false,
+            type: "main", // values: undefined, sub, main
+          },
           content: [
             {
               type: "section",
@@ -864,6 +880,10 @@ export const pageData = {
             title: "Trunk page title",
             description: "Trunk page description",
           },
+          hero: {
+            visible: false,
+            type: "main", // values: undefined, sub, main
+          },
         },
       ],
     },
@@ -885,6 +905,10 @@ export const pageData = {
         title: "Motorbike page title",
         description: "Motorbike page description",
       },
+      hero: {
+        visible: true,
+        type: "main", // values: undefined, sub, main
+      },
 
       //SUB PAGE
 
@@ -902,6 +926,130 @@ export const pageData = {
             title: "Helmet page title",
             description: "Helmet page description",
           },
+          hero: {
+            visible: false,
+            type: "main", // values: undefined, sub, main
+          },
+          content: [
+            {
+              type: "section",
+              id: "section1",
+              parent: null,
+              className: "",
+              children: [
+                {
+                  type: "headline1",
+                  className: "",
+                  text: "Wheel Test",
+                },
+                {
+                  type: "paragraphGroup",
+                  className: "",
+                  children: [
+                    {
+                      type: "paragraph",
+                      className: "",
+                      children: [
+                        {
+                          type: "text",
+                          text: "AMATE je značka 3-Logy s.r.o.",
+                        },
+                      ],
+                    },
+                    {
+                      type: "paragraph",
+                      className: "",
+                      children: [
+                        {
+                          type: "text",
+                          text: "951 62 Nevidzany 187",
+                        },
+                      ],
+                    },
+                    {
+                      type: "paragraph",
+                      className: "",
+                      children: [
+                        {
+                          type: "text",
+                          text: "IČO: 50 776 231, IČ DPH: SK2120460144 podľa §4",
+                        },
+                      ],
+                    },
+                    {
+                      type: "paragraph",
+                      className: "",
+                      children: [
+                        {
+                          type: "text",
+                          text: "Zapísaná na Nitra, odd. Sro, vl.č.42737/N, dátum vzniku: 7. marca 2017",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              type: "section",
+              id: "section2",
+              parent: "section1",
+              className: "",
+              children: [
+                {
+                  type: "headline2",
+                  className: "",
+                  text: "Kontakt",
+                },
+                {
+                  type: "paragraphGroup",
+                  className: "",
+                  children: [
+                    {
+                      type: "paragraph",
+                      className: "",
+                      children: [
+                        {
+                          type: "text",
+                          text: "www.amate.sk",
+                        },
+                      ],
+                    },
+                    {
+                      type: "paragraph",
+                      className: "",
+                      children: [
+                        {
+                          type: "text",
+                          text: "info@amate.sk",
+                        },
+                      ],
+                    },
+                    {
+                      type: "paragraph",
+                      className: "",
+                      children: [
+                        {
+                          type: "text",
+                          text: "Ing. Juraj Baláž",
+                        },
+                      ],
+                    },
+                    {
+                      type: "paragraph",
+                      className: "",
+                      children: [
+                        {
+                          type: "text",
+                          text: "+421 (0) 911 561 885",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
         },
         {
           id: 2,
@@ -915,6 +1063,10 @@ export const pageData = {
           metaData: {
             title: "Jacket page title",
             description: "Jacket page description",
+          },
+          hero: {
+            visible: false,
+            type: "main", // values: undefined, sub, main
           },
         },
       ],
@@ -937,6 +1089,10 @@ export const pageData = {
         title: "Motorbike page title",
         description: "Motorbike page description",
       },
+      hero: {
+        visible: false,
+        type: "main", // values: undefined, sub, main
+      },
 
       //SUB PAGE
 
@@ -954,6 +1110,10 @@ export const pageData = {
             title: "Helmet page title",
             description: "Helmet page description",
           },
+          hero: {
+            visible: false,
+            type: "main", // values: undefined, sub, main
+          },
         },
         {
           id: 2,
@@ -967,6 +1127,10 @@ export const pageData = {
           metaData: {
             title: "Jacket page title",
             description: "Jacket page description",
+          },
+          hero: {
+            visible: false,
+            type: "main", // values: undefined, sub, main
           },
         },
       ],
@@ -989,6 +1153,10 @@ export const pageData = {
         title: "Plane page title",
         description: "Plane page description",
       },
+      hero: {
+        visible: false,
+        type: "main", // values: undefined, sub, main
+      },
     },
 
     // MAIN PAGE
@@ -1008,6 +1176,10 @@ export const pageData = {
         title: "Plane page title",
         description: "Plane page description",
       },
+      hero: {
+        visible: false,
+        type: "main", // values: undefined, sub, main
+      },
 
       // SUB PAGE
 
@@ -1025,6 +1197,10 @@ export const pageData = {
             title: "Turbine page title",
             description: "Turbine page description",
           },
+          hero: {
+            visible: false,
+            type: "main", // values: undefined, sub, main
+          },
         },
         {
           id: 2,
@@ -1038,6 +1214,10 @@ export const pageData = {
           metaData: {
             title: "Trunk page title",
             description: "Trunk page description",
+          },
+          hero: {
+            visible: false,
+            type: "main", // values: undefined, sub, main
           },
         },
       ],
@@ -1058,6 +1238,10 @@ export const pageData = {
       metaData: {
         title: "Impressum",
         description: "Impressum",
+      },
+      hero: {
+        visible: false,
+        type: "main", // values: undefined, sub, main
       },
       content: [
         {
@@ -1196,6 +1380,10 @@ export const pageData = {
       metaData: {
         title: "Ochrana osobných údajov",
         description: "Ochrana osobných údajov",
+      },
+      hero: {
+        visible: false,
+        type: "main", // values: undefined, sub, main
       },
       content: [
         {
@@ -1735,6 +1923,10 @@ export const pageData = {
         title: "Car page title",
         description: "Car page description",
       },
+      hero: {
+        visible: false,
+        type: "main", // values: undefined, sub, main
+      },
       content: [
         {
           type: "section",
@@ -2115,4 +2307,37 @@ export const pageData = {
       ],
     },
   ],
+
+  shop: {
+    general: {
+      layout: "Layout1",
+      sidebarNav: { visible: true }, // values: undefined, true, false; overwrites the global property
+      centerContent: true,
+      navLabel: "Shop",
+      topNavVisible: true,
+      footerVisible: true,
+      hero: {
+        visible: false,
+        type: "main", // values: undefined, sub, main
+      },
+    },
+    products: {
+      metaData: {
+        title: "Car page title",
+        description: "Car page description",
+      },
+    },
+    confirmation: {
+      metaData: {
+        title: "Car page title",
+        description: "Car page description",
+      },
+    },
+    success: {
+      metaData: {
+        title: "Car page title",
+        description: "Car page description",
+      },
+    },
+  },
 };

@@ -29,7 +29,7 @@ export default function TopNavList() {
       {/* INITIAL WORKING VERSION */}
 
       <nav
-        className="relative flex w-full items-center justify-between dark:bg-neutral-700 lg:flex-wrap lg:justify-start"
+        className="relative flex w-full items-center justify-between dark:bg-neutral-700 lg:flex-wrap lg:justify-start "
         data-twe-navbar-ref
       >
         <div className="flex w-full flex-wrap items-center justify-end px-3">

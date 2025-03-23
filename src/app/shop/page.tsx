@@ -14,12 +14,94 @@ import { selectedDesignStyle } from "@/lib/utilities/designStyle/designStyle";
 import { getProductData } from "@/lib/utilities/fetchProductData/fetchProductData";
 import Button from "@/components/button";
 import Link from "next/link";
+import Hero from "@/components/hero";
+import Headline2 from "@/components/headline2";
+import ContentBlock from "@/components/contentBlock";
+import { Headline1 } from "@/app/types";
+
+/* const headlineContent: any = */
+/*  {
+    type: "headline1",
+    text: "Produkty",
+    className: "",
+  },
+  {
+    type: "headline1",
+    text: "Produkty",
+    className: "",
+  }, */
+/*  {
+    type: "section",
+    id: "section1",
+    parent: null,
+    className: "",
+    children: [
+      {
+        type: "headline1",
+        className: "",
+        text: "AMATE – Love your energy",
+      },
+      {
+        type: "paragraphGroup",
+        className: "",
+        children: [
+          {
+            type: "paragraph",
+            className: "",
+            children: [
+              {
+                type: "text",
+                text: "AMATE je osviežujúci sýtený nápoj s vysokým obsahom kofeínu (30 mg na 100 ml), nálevom z listov maté a rastlinnými extraktmi. Nápoj neobsahuje alkohol a je vhodný i pre vegánov. Nápoj AMATE je plný energie, ktorá osvieži a povzbudí – pri posedení s priateľmi, pri práci alebo zábave a tanci.",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }; */
+
+const headlineContent = [
+  {
+    type: "section",
+    id: "section1",
+    parent: null,
+    className: "",
+    children: [
+      {
+        type: "headline1",
+        className: "",
+        text: "Produkty",
+      },
+      {
+        type: "paragraphGroup",
+        className: "",
+        children: [
+          {
+            type: "paragraph",
+            className: "",
+            children: [
+              {
+                type: "text",
+                text: "Vyberte si svoje obľúbené produkty a upravte množstvo podľa potreby!",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
 
 export default function Shop() {
   const { general } = pageData;
-  const { global, button } = selectedDesignStyle || {};
+  const {
+    global,
+    button,
+    sidebarNav: sidebarNavDesignConfig,
+  } = selectedDesignStyle || {};
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { main, hero: heroDesignConfig } = selectedDesignStyle || {};
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -142,7 +224,20 @@ export default function Shop() {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+      {/* Render content blocks */}
+
+      {/*    <Headline1 headline1ClassName="mb-3 mt-5">Produkty</Headline1>
+       */}
+
+      {/*    <ContentBlock content={headlineContent} /> */}
+
+      <div>
+        {headlineContent?.map((block: any, index: number) => (
+          <ContentBlock key={index} content={block} />
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 pb-14 mt-5">
         {products.map((product: any) => {
           const currentAmount =
             cartItems.find((item) => item.id === product._id)?.amount || 0;
@@ -281,7 +376,7 @@ export default function Shop() {
           );
         })}
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center pb-14">
         <Link href="/shop/confirmation">
           <Button>Continue</Button>
         </Link>

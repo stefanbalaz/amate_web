@@ -2,10 +2,13 @@
 
 import { notFound } from "next/navigation";
 import { pageData } from "@/data/pageData";
-import { FirstLevelPage as FirstLevelPageProps } from "@/app/types";
+import {
+  ContentRendererParams,
+  FirstLevelPage as FirstLevelPageProps,
+} from "@/app/types";
 import { useDispatch } from "react-redux";
 import { setBreadcrumbs } from "@/store/breadcrumbsSlice";
-import { useEffect, useMemo } from "react";
+import { Usable, use, useEffect, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
 import { selectedDesignStyle } from "@/lib/utilities/designStyle/designStyle";
 import contentRenderer from "@/lib/utilities/contentRendering/contentRenderer";
@@ -19,7 +22,10 @@ export default function FirstLevelPage({ params }: any) {
   const { main: mainDesignStyle, sidebarNav: sidebarNavDesignStyle } =
     selectedDesignStyle || {};
   const { breadcrumbs: breadcrumbsConfig } = pageData.general;
-  const { firstLevelPage: slug } = params;
+
+  const resolvedParams = use(params as Usable<ContentRendererParams>);
+
+  const { firstLevelPage: slug } = resolvedParams;
 
   // Find the current page based on the URL slug
   const currentFirstLevelPage = pageData.firstLevelPage.find(

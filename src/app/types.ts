@@ -31,6 +31,7 @@ interface GlobalDesign {
 export type ButtonSize = "small" | "medium" | "large" | undefined;
 export type ButtonRounded =
   | "rounded"
+  | "rounded-md"
   | "rounded-full"
   | "undefined"
   | undefined;
@@ -384,7 +385,7 @@ interface SidebarNav {
 // }
 
 // Headline definition
-interface Headline1 {
+export interface Headline1 {
   type: "headline1";
   className: string;
   text: string;
@@ -429,7 +430,7 @@ interface Section {
 }
 
 // Base interface for common properties
-interface BaseContent {
+export interface BaseContent {
   type: string;
   className: string;
 }
@@ -615,6 +616,10 @@ export interface FirstLevelPage {
     firstLevelPage: string;
     secondLevelPage: string;
   };
+  hero: {
+    visible: boolean;
+    type: string;
+  };
 }
 
 // Define the interface for the second level page
@@ -634,6 +639,10 @@ export interface SecondLevelPage {
     secondLevelPage: string;
   };
   currentSecondLevelPage?: any;
+  hero: {
+    visible: boolean;
+    type: string;
+  };
 }
 
 // interface LogoTypeTextProps {

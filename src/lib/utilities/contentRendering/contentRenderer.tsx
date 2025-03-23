@@ -5,6 +5,7 @@ import { selectedDesignStyle } from "@/lib/utilities/designStyle/designStyle";
 import ContentBlock from "@/components/contentBlock";
 import classNames from "classnames";
 import { ContentRendererParams } from "@/app/types";
+import { Usable, use } from "react";
 
 interface Block {
   type: string;
@@ -15,14 +16,19 @@ interface Block {
 export default function contentRenderer(params: ContentRendererParams) {
   const { sidebarNav: sidebarNavDesignConfig } = selectedDesignStyle || {};
 
+  const resolvedParams = use(params as Usable<ContentRendererParams>);
+
+  // Check if params is empty (homepage case)
+  const isHomePage = Object.keys(resolvedParams).length === 0;
+
   // Check if params is empty, indicating the homepage
-  const isHomePage = Object.keys(params).length === 0;
+  /*   const isHomePage = Object.keys(params).length === 0; */
 
   // Destructure slugs from params
   const {
     firstLevelPage: slugFirstLevelPage,
     secondLevelPage: slugSecondLevelPage,
-  } = params;
+  } = resolvedParams;
 
   // Function to find the current page based on slugs
   function findCurrentPage({ slugFirstLevelPage, slugSecondLevelPage }: any) {
@@ -33,12 +39,15 @@ export default function contentRenderer(params: ContentRendererParams) {
 
     if (slugSecondLevelPage) {
       // Iterate through each first-level page to find the matching second-level page
-      for (const firstLevelPage of pageData.firstLevelPage) {
+      for (const firstLevelPage of pageData.firstLevelPage as any) {
         // Check if the first-level page has second-level pages
-        if (firstLevelPage.secondLevelPage) {
+        if (
+          firstLevelPage.hasOwnProperty("secondLevelPage") &&
+          firstLevelPage.secondLevelPage
+        ) {
           // Attempt to find the second-level page within the current first-level page
           const foundSecondLevelPage = firstLevelPage.secondLevelPage.find(
-            (page) => page.url === slugSecondLevelPage
+            (page: any) => page.url === slugSecondLevelPage
           );
           // If found, return the second-level page
           if (foundSecondLevelPage) {

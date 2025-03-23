@@ -11,7 +11,8 @@ import classNames from "classnames";
 import { Block } from "@/app/types";
 
 const ContentBlock = ({ content }: { content: Block }) => {
-  const { main: mainDesignStyle } = selectedDesignStyle || {};
+  const { main: mainDesignStyle, image: imageDesignStyle } =
+    selectedDesignStyle || {};
 
   switch (content.type) {
     case "section":
@@ -142,7 +143,11 @@ const ContentBlock = ({ content }: { content: Block }) => {
       return (
         <div className="mb-3">
           <Image
-            className={content.className}
+            className={twMerge(
+              "",
+              content.className,
+              imageDesignStyle?.designAdditionalClassName
+            )}
             width={500 ?? 500}
             height={300 ?? 300}
             // Importing an image will
@@ -174,7 +179,10 @@ const ContentBlock = ({ content }: { content: Block }) => {
           {/* Render the image if it exists */}
           {imageElement && (
             <Image
-              className="w-1/2 float-right ml-6 mb-2"
+              className={twMerge(
+                "w-1/2 float-right ml-6 mb-2",
+                imageDesignStyle?.designAdditionalClassName
+              )}
               width={290}
               height={150}
               src={imageElement.src}
@@ -215,6 +223,19 @@ const ContentBlock = ({ content }: { content: Block }) => {
           ))}
         </ul>
       );
+
+    /*     case "video":
+      return (
+        <div className="relative w-full h-0 pb-[56.25%]">
+          <iframe
+            src="https://drive.google.com/file/d/13gnUKjSHDGQnB2szAoteWDzqoxi43Bfy/preview"
+            width="100%"
+            height="100%"
+            style={{ border: "none", position: "absolute", top: 0, left: 0 }}
+            allow="autoplay"
+          ></iframe>
+        </div>
+      ); */
 
     default:
       return null;

@@ -53,7 +53,7 @@ export default function Home({ params }: { params: ContentRendererParams }) {
         )}
       >
         <div className="p-6">
-          {!heroDesignConfig?.fullWidth && <Hero />}
+          {/*         {!heroDesignConfig?.fullWidth && <Hero />} */}
 
           {generatedContent}
         </div>

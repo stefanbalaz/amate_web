@@ -40,6 +40,9 @@ export default function Button({ children }: { children: React.ReactNode }) {
       case "rounded":
         return "rounded";
 
+      case "rounded-md":
+        return "rounded-md";
+
       case "rounded-full":
         return "rounded-full";
 
@@ -57,9 +60,11 @@ export default function Button({ children }: { children: React.ReactNode }) {
     <button
       type="button"
       className={twMerge(
-        "inline-block  bg-primary uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong",
+        "inline-block  uppercase leading-normal shadow-primary-3 transition duration-150 ease-in-out motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong",
         buttonSize,
-        roundedButton
+        roundedButton,
+        buttonDesignStyle?.primary?.color,
+        buttonDesignStyle?.primary?.style
       )}
     >
       {/* Primary */}

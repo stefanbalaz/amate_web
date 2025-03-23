@@ -16,6 +16,8 @@ import { RootState } from "@/store/store";
 import { getProductData } from "@/lib/utilities/fetchProductData/fetchProductData";
 import { addToCart, updateAmount } from "@/store/cartSlice";
 import Button from "@/components/button";
+import ContentBlock from "@/components/contentBlock";
+import Link from "next/link";
 
 // initTWE({ ScrollSpy });
 
@@ -44,6 +46,107 @@ export default function Confirmation({
     () => [{ label: breadcrumbsConfig.initialLabel }],
     []
   );
+
+  const headlineContent = [
+    {
+      type: "section",
+      id: "section1",
+      parent: null,
+      className: "",
+      children: [
+        {
+          type: "headline1",
+          className: "",
+          text: "Potvrdenie objednávky",
+        },
+        {
+          type: "paragraphGroup",
+          className: "",
+          children: [
+            {
+              type: "paragraph",
+              className: "",
+              children: [
+                {
+                  type: "text",
+                  text: "Skontrolujte prosím všetky údaje a dokončite svoju objednávku.",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+
+  const subHeadlineContent = [
+    {
+      type: "section",
+      id: "section1",
+      parent: null,
+      className: "",
+      children: [
+        {
+          type: "headline2",
+          className: "",
+          text: "Dodacia adresa",
+        },
+
+        {
+          type: "paragraphGroup",
+          className: "",
+          children: [
+            {
+              type: "paragraph",
+              className: "",
+              children: [
+                {
+                  type: "text",
+                  text: "Stefan Balaz",
+                },
+              ],
+            },
+            {
+              type: "paragraph",
+              className: "",
+              children: [
+                {
+                  type: "text",
+                  text: "Pflügerstr. 80",
+                },
+              ],
+            },
+            {
+              type: "paragraph",
+              className: "",
+              children: [
+                {
+                  type: "text",
+                  text: "Berlin",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+
+  const onlyHeadlineContent = [
+    {
+      type: "section",
+      id: "section1",
+      parent: null,
+      className: "",
+      children: [
+        {
+          type: "headline2",
+          className: "",
+          text: "Dodacia metóda",
+        },
+      ],
+    },
+  ];
 
   // Update breadcrumbs in Redux on component mount
   useEffect(() => {
@@ -193,146 +296,159 @@ export default function Confirmation({
 
   return (
     <>
-      <div
-        className={twMerge(
-          "block w-full dark:bg-surface-dark dark:text-white",
-          main?.designAdditionalClassName
-        )}
-      >
-        <div className="">
-          {!heroDesignConfig?.fullWidth && <Hero />}
-          <div className="grid grid-cols-3 gap-x-6 pb-14">
-            <div className="col-span-2 mt-5">
-              <div
-                data-twe-spy="scroll"
-                data-twe-target="#scrollspy-smooth"
-                data-twe-offset="0"
-                className="relative"
-              >
-                {/* Render content blocks */}
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-                <div>CONTENT 1</div>
-              </div>
+      <div className="grid grid-cols-3 gap-x-6 pb-14">
+        <div className="col-span-2 mt-5">
+          <div
+            data-twe-spy="scroll"
+            data-twe-target="#scrollspy-smooth"
+            data-twe-offset="0"
+            className="relative"
+          >
+            {/* Render content blocks */}
+            <div>
+              {headlineContent?.map((block: any, index: number) => (
+                <ContentBlock key={index} content={block} />
+              ))}
             </div>
 
-            {/* Render sidebarNav */}
-            <div className="mt-5">
-              <div
-                id="scrollspy-smooth"
+            <div>
+              {subHeadlineContent?.map((block: any, index: number) => (
+                <ContentBlock key={index} content={block} />
+              ))}
+            </div>
+
+            <div className="">
+              <Link href="/shop/confirmation">
+                <Button>Zmenit</Button>
+              </Link>
+            </div>
+
+            <div>
+              {onlyHeadlineContent?.map((block: any, index: number) => (
+                <ContentBlock key={index} content={block} />
+              ))}
+            </div>
+
+            <div>
+              {/* <input
+                type="number" // Use "number" type to allow only numeric input
+                
+                name="amount"
+                id="amount"
                 className={twMerge(
-                  "sticky top-0 px-3 py-3",
-                  sidebarNavDesignConfig?.backgroundColor,
-                  "bg-opacity-20"
+                  "appearance-none text-center h-full w-full ring-1 bg-primary-light bg-opacity-90 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-dark text-base sm:text-lg"
                 )}
-              >
-                <div className="mb-5">
-                  <Headline2>Objednávka</Headline2>
-                </div>
+                value={"Test"} // Redux-managed value
+        // onChange={(e) => }
+        //                   onFocus={(e) => }
+        //                   onBlur={(e) => }
+              /> */}
+            </div>
+          </div>
+        </div>
 
-                {finalCartData.length === 0 ? (
-                  <p>No products in cart.</p>
-                ) : (
-                  finalCartData.map((product: any) => (
-                    <div key={product._id} className="mb-4  ">
-                      {/* Add margin bottom for vertical spacing */}
-                      <div className="grid grid-cols-[15%,47%,15%,17%] gap-x-[2%] text-left w-full items-center">
-                        <Image
-                          src={`/labels/${product.productLabel}`}
-                          alt="Classic Label"
-                          sizes="100vw"
-                          width={500}
-                          height={500}
-                          style={{
-                            width: "100%",
-                            height: "auto",
-                          }}
-                        />
-                        <div className="">
-                          <div className="font-bold">
-                            {product.productBrand} {product.productName}
-                          </div>
-                          <div>{product.productVolume} ml</div>
-                        </div>
-                        {/* <div className="bg-red-500">{product.amount} ks</div> */}
+        {/* Render sidebarNav */}
+        <div className="mt-5">
+          <div
+            id="scrollspy-smooth"
+            className={twMerge(
+              "sticky top-0 px-3 py-3",
+              sidebarNavDesignConfig?.backgroundColor,
+              "bg-opacity-20"
+            )}
+          >
+            <div className="mb-5">
+              <Headline2>Objednávka</Headline2>
+            </div>
+            {finalCartData.length === 0 ? (
+              <p>No products in cart.</p>
+            ) : (
+              finalCartData.map((product: any) => (
+                <div key={product._id} className="mb-4">
+                  {/* Add margin bottom for vertical spacing */}
+                  {/*               <div className="grid grid-cols-[15%,15%,47%,17%] gap-x-[2%] text-left w-full items-center"> */}
+                  <div className="grid grid-cols-[15%,15%,43%,21%] gap-x-[2%] text-left w-full items-center">
+                    {/* Input field */}
 
-                        {/* Input field */}
-
-                        <div
-                          className="font-bold w-full grid grid-cols-[19%,62%,19%] h-full"
-                          style={{ color: global?.secondaryColorDefault }}
+                    <div
+                      className="font-bold w-full grid grid-cols-[19%,62%,19%] h-full"
+                      style={{ color: global?.secondaryColorDefault }}
+                    >
+                      {/* Decrement amount   */}
+                      <div className="h-full text-white">
+                        <button
+                          className={twMerge(
+                            "rounded-l-md flex items-center justify-center h-full w-full opacity-50 hover:opacity-70 active:opacity-50",
+                            button?.primary.color
+                          )}
+                          onClick={() => handleDecreaseAmount(product, 1)}
                         >
-                          {/* Decrement amount   */}
-                          <div className="h-full text-white">
-                            <button
-                              className={twMerge(
-                                "rounded-l-md flex items-center justify-center h-full w-full opacity-50 hover:opacity-70 active:opacity-50",
-                                button?.primary.color
-                              )}
-                              onClick={() => handleDecreaseAmount(product, 1)}
-                            >
-                              -
-                            </button>
-                          </div>
+                          -
+                        </button>
+                      </div>
 
-                          <div className="flex items-center justify-center h-full">
-                            <input
-                              type="number" // Use "number" type to allow only numeric input
-                              name="amount"
-                              id="amount"
-                              className={twMerge(
-                                "appearance-none text-center h-full w-full ring-1 bg-primary-light bg-opacity-90 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-dark text-base sm:text-lg"
-                              )}
-                              value={product.amount} // Redux-managed value
-                              onChange={(e) => handleInputChange(e, product)}
-                              onFocus={(e) =>
-                                handleInputFocus(e, product.amount)
-                              }
-                              onBlur={(e) => handleInputBlur(e, product)}
-                            />
-                          </div>
+                      <div className="flex items-center justify-center h-full">
+                        <input
+                          type="number" // Use "number" type to allow only numeric input
+                          name="amount"
+                          id="amount"
+                          className={twMerge(
+                            "appearance-none text-center h-full w-full ring-1 bg-primary-light bg-opacity-90 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-dark text-base sm:text-lg"
+                          )}
+                          value={product.amount} // Redux-managed value
+                          onChange={(e) => handleInputChange(e, product)}
+                          onFocus={(e) => handleInputFocus(e, product.amount)}
+                          onBlur={(e) => handleInputBlur(e, product)}
+                        />
+                      </div>
 
-                          {/* Increment amount */}
-                          <div className="h-full text-white">
-                            <button
-                              className={twMerge(
-                                "rounded-r-md flex items-center justify-center h-full w-full opacity-50 hover:opacity-70 active:opacity-50",
-                                button?.primary.color
-                              )}
-                              onClick={() => handleIncreaseAmount(product, 1)}
-                            >
-                              +
-                            </button>
-                          </div>
-                        </div>
-
-                        <div className="text-2xl  whitespace-nowrap text-right">
-                          {(product.productVolume * product.amount).toFixed(2)}{" "}
-                          €
-                        </div>
+                      {/* Increment amount */}
+                      <div className="h-full text-white">
+                        <button
+                          className={twMerge(
+                            "rounded-r-md flex items-center justify-center h-full w-full opacity-50 hover:opacity-70 active:opacity-50",
+                            button?.primary.color
+                          )}
+                          onClick={() => handleIncreaseAmount(product, 1)}
+                        >
+                          +
+                        </button>
                       </div>
                     </div>
-                  ))
-                )}
-              </div>
-            </div>
+
+                    {/* Image */}
+                    <Image
+                      src={`/labels/${product.productLabel}`}
+                      alt="Classic Label"
+                      sizes="100vw"
+                      width={500}
+                      height={500}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                      }}
+                    />
+
+                    {/* Product details */}
+                    <div className="">
+                      <div className="font-bold">
+                        {product.productBrand} {product.productName}
+                      </div>
+                      <div>{product.productVolume} ml</div>
+                    </div>
+                    {/* <div className="bg-red-500">{product.amount} ks</div> */}
+
+                    {/* Total price */}
+
+                    <div className="text-2xl   text-right">
+                      {(product.productVolume * product.amount).toFixed(2)} €
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
+
+            <div className="w-full border-t border-primary-dark border-opacity-50 mt-6 mb-4"></div>
           </div>
         </div>
       </div>
