@@ -16,7 +16,7 @@ interface Block {
 export default function ContentRenderer(params: ContentRendererParams) {
   const { sidebarNav: sidebarNavDesignConfig } = selectedDesignStyle || {};
 
-  const resolvedParams = use(params as Usable<ContentRendererParams>);
+  const resolvedParams = use(params as Usable<any>);
 
   // Check if params is empty (homepage case)
   const isHomePage = Object.keys(resolvedParams).length === 0;

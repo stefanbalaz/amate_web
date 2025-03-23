@@ -23,7 +23,7 @@ export default function FirstLevelPage({ params }: any) {
     selectedDesignStyle || {};
   const { breadcrumbs: breadcrumbsConfig } = pageData.general;
 
-  const resolvedParams = use(params as Usable<ContentRendererParams>);
+  const resolvedParams = use(params as Usable<any>);
 
   const { firstLevelPage: slug } = resolvedParams;
 
