@@ -24,7 +24,7 @@ import Link from "next/link";
 export default function Confirmation({
   params,
 }: {
-  params: ContentRendererParams;
+  params: any;
 }) {
   if (!params) {
     throw new Error("Params is undefined");
